@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>慕学在线跳转页面</title>
+</head>
+<body>
+    <script language="JavaScript1.2" type="text/javascript">
+
+        function delayURL(url) {
+
+            var delay=document.getElementById("time").innerHTML;
+
+            if(delay>0){
+
+                delay--;
+
+                document.getElementById("time").innerHTML=delay;
+
+        }else{
+
+        window.top.location.href=url;
+
+        }
+
+        setTimeout("delayURL('" + url + "')", 1000);
+
+        //此处1000毫秒即每一秒跳转一次
+
+        }
+
+        </script>
+
+    <span>注册成功,激活链接已发送至你的邮箱，请到邮箱进行激活</span></br>
+       <span id="time" style="background: red">5</span>
+
+        秒钟之后自动跳转至注册页面，如果不跳转，请点击下面链接
+
+        <a href="{% url 'register' %}">主页面</a>
+
+        <script type="text/javascript">
+
+        delayURL("{% url 'register' %}");
+
+</script>
+
+</body>
+</html>
